@@ -1,189 +1,58 @@
-# Start Your Code here
+class Tickets: # Classes are blueprints for creating objects. For example, the tickets_obj below.
+    def __init__ (self, tickets, price): # This method initializes the properties of your class. All new objects will have these properties.
+        self.tickets = list(range(1, tickets + 1))
+        self.price = price
+        self.taken_tickets = []
+    def take_ticket(self): # This is a method (a function inside of a class) for taking tickets. It uses two list datastructures.
+        popped_ticket = self.tickets.pop(0)
+        self.taken_tickets.append(popped_ticket)
+        print(f"Your ticket number is {popped_ticket}.")
+        # available ticket and space are decresed by 1
+    def pay_4_parking(self): # This method takes user inputs and determines whether they would like to pay.
+        print(tickets_obj.tickets)
+        while True: #Cyrus added "while True" to remove the nested fuction
+            tick_num = input('What is your ticket number? ') 
+            if (not tick_num.isnumeric()):
+                print("Ticket number invalid. Please try again.")
+            else:
+                tick_num = int(tick_num)
+                if tick_num in tickets_obj.tickets: #Cyrus added if input equals invalid ticket.
+                    print("Ticket number has not been taken. Please try again.")
+                else:
+                    print("Ticket number invalid. Please try again.")
+                if tick_num in self.taken_tickets:
+                    paying = input(f'The ticket price today is ${self.price} Would you like to pay for your ticket now? (y/n) ').lower()
+                    if paying == 'y':
+                        self.tickets.append(tick_num)
+                        self.taken_tickets.remove(tick_num)
+                        print('Thank you for parking with us today! ')
+                        break
+                    elif paying == 'n':
+                        print('Don\'t forget to pay for your ticket. ')
+                    else:
+                        print('Please enter a valid reponse. ') #Cyrus removed the fuction within a function
 
-#Cyrus
-# from operator import truediv
-
-
-class Ticket:
-    def __init__(self, tickets, space):
-        self.tickets = tickets
-        self.space = space
-
-    def takeTicket(self):
-        self.tickets -= 1
-        self.space -= 1
-
-currentTicket = {False}
-
-t = Ticket(5, 5)
-
-def payForParking():
-        while True:
-            ticket = input("Hello! Welcome to Coding Temple Garage. A ticket is $1, would you like to purchase a ticket (y,n)?: ")
-            if ticket.lower() == 'y':
-                price = input("How much would you like to pay?: ")
-                print(f"You've paid this much: ")
-                print(price)
-                t.takeTicket()
-                print(f"Tickets Left: ")
-                print(t.tickets)
-                print(f"Spaces left: ")
-                print(t.space)
-            if ticket.lower() == 'n':
-                print("Have a nice day!")
-                break
-
-#     input: (waits for amount and store in a variable)
-#     if not empty:
-#         display message that ticket has been paid and they have 15 mins to leave.
-#     updates "current ticket dict": key "paid" to truediv
-
-# def leaveGarage():
-#     if ticket paid,
-#         display "Thank You, have a nice day"
-#     if ticket not paid,
-#         input(please pay)
-
-#     once paid:
-#         display "Thank You, have a nice day"
-#             {increase ticket count by 1}
-#             {increase space count by 1}
+# In your run function, make it possible for users to see the number of available spaces by printing the length of the self.tickets list.
+            # try:
+            #     int(tick_num)
+            #     it_is = True
+            # except ValueError:
+            #     it_is = False           
+            # if tick_num == False:
+            #     print("Ticket number invalid. Please try again.")
+            # if tick_num == True:
+            #     tick_num = int(tick_num)
+            #     continue
 
 
-payForParking()
+tickets_obj = Tickets(20, 5)
 
-"""  """
+# Below are test runs.
 
-# Your parking gargage class should have the following methods:
-# - takeTicket
-# - This should decrease the amount of tickets available by 1
-# - This should decrease the amount of parkingSpaces available by 1
-# - payForParking
-# - Display an input that waits for an amount from the user and store it in a variable
-# - If the payment variable is not empty then (meaning the ticket has been paid) -> display a message to the user that their ticket has been paid and they have 15mins to leave
-# - This should update the "currentTicket" dictionary key "paid" to True
-# -leaveGarage
-# - If the ticket has been paid, display a message of "Thank You, have a nice day"
-# - If the ticket has not been paid, display an input prompt for payment
-# - Once paid, display message "Thank you, have a nice day!"
-# - Update parkingSpaces list to increase by 1 (meaning add to the parkingSpaces list)
-# - Update tickets list to increase by 1 (meaning add to the tickets list)
-
-# You will need a few attributes as well:
-# - tickets -> list
-# - parkingSpaces -> list
-# - currentTicket -> dictionary
-
-# class Ticket:
-#     def __init__(self, tickets, space):
-#         self.tickets = 5
-#         self.space = 5
-
-#     def 
-
-# dict_paid= {
-#     "currentTicket": "true",
-# }
-
-# print(dict_a)
-
-# def takeTicket():
-
-
-
-    
-#         while True:
-#             print("Hello! Welcome to Coding Temple Garage.")
-#             ticket = input("A ticket is $1, would you like to purchase a ticket or exit?: ")
-
-#             if ticket == "yes" or "":
-#                 print("Thank you, have a nice day!")
-            
-#             if ticket.lower == 'n' or "no" or "exit" or "quit":
-#                 print("Have a nice day!")
-#                 break
-
-
-# def print_receipt(self):
-#         print("=~ *15")
-#         print("Your Receipt: ")
-
-
-# parking_garage = Ticket("1")
-# parking_garage.takeTicket()
-
-
-# class Items:
-#     def __init__(self, fish, drink, vegetable):
-#         self.fish = fish
-#         self.drink = drink
-#         self.vegetable = vegetable
-# class Shopping_cart:
-#     def __init__(self, fish, drink, vegetable, cart=[]):
-#         self.fish = fish
-#         self.drink = drink
-#         self.vegetable = vegetable
-#         self.cart = cart
-#     def add_cart(self, fish, drink, vegetable):
-#         new_items = Items(fish, drink, vegetable)
-#         self.cart.append(new_items)
-#     def print_receipt(self):
-#         print("=~ *15")
-#         print("Your Receipt: ")
-#         for item in self.cart:
-#             print(item.fish, item.drink, item.vegetable)
-#         print("=~ *15")
-#     def run(self):
-#         while True:
-#             fish = input("What kind of fish do you want for tonight?: ")
-#             drink = input("What kind of drink do you want?: ")
-#             vegetable = input("What kind of vegetable do you want to buy?: ")
-#             self.add_cart (fish, drink, vegetable)
-#             cont = input("Do you need anything else (y/n)? ")
-#             if cont == 'n':
-#                 break
-#         self.print_receipt()
-# your_cart = Shopping_cart('salmon', 'beer', 'tomato')
-# your_cart.run()
-
-
-
-
-
-# def storeInfo():
-#     list = [] 
-    
-#     while True:
-#         cart = input("Do you want to : Show/Add/Delete or Quit?: ")
-#         if cart.lower() == "show":
-#             print(f"This is your cart: ")
-#             for x in list:
-#                 print(x)
-#         if cart.lower() == "add":
-#             item = input("What would you like to add?: ")
-#             list.append(item)
-#             print(f"This is your cart: ")
-#             for x in list:
-#                 print(x)
-#         if cart.lower() == "delete":
-#             item = input("What would you like to delete?: ")
-#             list.remove(item)
-#             print(f"This is your cart: ")
-#             for x in list:
-#                 print(x)
-#         if cart.lower() == "quit":
-#             print(f"This is your cart: ")
-#             for x in list:
-#                 print(x)
-#             break
-
-# storeInfo()
-
-
-
-
-
-
-
-
-
+# print(tickets_obj.tickets) # This prints self.tickets for the tickets_obj object.
+# print(tickets_obj.price) # This prints self.price for the tickets_obj object.
+# tickets_obj.take_ticket() # This runs self.take_ticket() for the tickets_obj object.
+tickets_obj.take_ticket()
+tickets_obj.pay_4_parking() # This runs self.pay_4_parking for the tickets_obj object.
+# print(f'Available ticket numbers: {tickets_obj.tickets} ') # This is a print statement for you to test the results of running your methods above.
+# print(f'Taken tickets numbers: {tickets_obj.taken_tickets} ')
