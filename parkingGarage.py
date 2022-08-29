@@ -11,7 +11,7 @@ class Tickets: # Classes are blueprints for creating objects. For example, the t
     def pay_4_parking(self): # This method takes user inputs and determines whether they would like to pay.
         print(tickets_obj.tickets)
         while True: #Cyrus added "while True" to remove the nested fuction
-            tick_num = input('What is your ticket number? ') 
+            tick_num = input('What is your ticket number? ') #Cyrus added numeric check for ticket input
             if (not tick_num.isnumeric()):
                 print("Ticket number invalid. Please try again.")
             else:
